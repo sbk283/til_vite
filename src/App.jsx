@@ -5,7 +5,7 @@ function App() {
   const [q, setQ] = useState("hello");
   useEffect(() => {
     console.log(q);
-  }, []);
+  }, [q]);
   return (
     <div>
       <h1>App</h1>
