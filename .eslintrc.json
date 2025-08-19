@@ -21,6 +21,9 @@
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
-    ]
+    ],
+    "no-unused-vars": "warn",
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "warn"
   }
 }
