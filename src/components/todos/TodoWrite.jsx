@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useTodos } from "../../contexts/todos/useTodos";
 
-const TodoWrite = ({ handleTodoAdd }) => {
+const TodoWrite = ({ onEndEdit }) => {
   // js 자리
+  const { addTodo } = useTodos();
+
   const [title, setTitle] = useState("");
   const handleKeyDown = e => {
     if (e.key === "Enter") {
@@ -16,8 +19,9 @@ const TodoWrite = ({ handleTodoAdd }) => {
         title: title,
         completed: false,
       };
-      handleTodoAdd(newTodo);
+      addTodo(newTodo);
       setTitle("");
+      onEndEdit();
     }
   };
   // jsx 자리
