@@ -1,36 +1,19 @@
-import { useState } from "react";
-import TodoList from "./components/todos/TodoList";
-import TodoWrite from "./components/todos/TodoWrite";
-import { TodoProvider } from "./contexts/todos/context";
+import CounterComponent from "./components/counter/CounterComponent";
+import { CounterProvider } from "./contexts/counter/context";
+import { useTheme } from "./contexts/theme/ThemeContext";
+
+const Popup = () => {
+  const { theme, fontSize } = useTheme();
+  return <div className={`bg-${theme}-500 font-[${fontSize}px]`}>팝업창</div>;
+};
 
 function App() {
-  // js 자리
-  // 오로지 하나만 편집이 가능하도록 ID 를 저장해둠
-  const [editId, setEditId] = useState(null);
-  // 편집을 시작했다.
-  const onStartEdit = id => {
-    setEditId(id);
-  };
-  // 편집을 종료했다.
-  const onEndEdit = () => {
-    setEditId(null);
-  };
-
-  // jsx 자리
   return (
-    <div>
-      <h1>할일 앱 서비스</h1>
-      <TodoProvider>
-        <div>
-          <TodoWrite onEndEdit={onEndEdit} />
-          <TodoList
-            onEndEdit={onEndEdit}
-            onStartEdit={onStartEdit}
-            editId={editId}
-          />
-        </div>
-      </TodoProvider>
-    </div>
+    <>
+      <CounterProvider>
+        <CounterComponent />
+      </CounterProvider>
+    </>
   );
 }
 
