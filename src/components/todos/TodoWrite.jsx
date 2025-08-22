@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useTodos } from "../../contexts/todos/useTodos";
+import { useNavigate } from "react-router-dom";
 
-const TodoWrite = ({ onEndEdit }) => {
+const TodoWrite = () => {
   // js 자리
+  const navigate = useNavigate();
   const { addTodo } = useTodos();
 
   const [title, setTitle] = useState("");
@@ -22,7 +24,7 @@ const TodoWrite = ({ onEndEdit }) => {
       };
       addTodo(newTodo);
       setTitle("");
-      onEndEdit();
+      navigate("/todos");
     }
   };
   // jsx 자리
